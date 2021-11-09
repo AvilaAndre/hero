@@ -1,5 +1,4 @@
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -20,11 +19,10 @@ public class Application {
             screen.startScreen(); // screens must be started
             screen.doResizeIfNecessary(); // resize screen if
             screen.clear();
-            screen.setCharacter(10, 10, TextCharacter.fromCharacter('X')
-                    [0]);
             screen.refresh();
             Game game = new Game();
             game.screen = screen;
+            game.arena = new Arena(40, 20);
             game.run();
         } catch (IOException e) {
             e.printStackTrace();
